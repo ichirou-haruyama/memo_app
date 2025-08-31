@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ $title ?? 'Page Title' }}</title>
+        <Link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         {{ $slot }}
