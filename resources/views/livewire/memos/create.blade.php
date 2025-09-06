@@ -3,7 +3,7 @@
 use function Livewire\Volt\{state, rules};
 use App\Models\Memo;
 
-state(['title', 'body']);
+state(['title', 'body', 'priority']);
 
 //バリテーションルールを定義
     rules([
@@ -16,6 +16,7 @@ $store = function() {
     Memo::create([
         'title' => $this->title,
         'body' => $this->body,
+        'priority' => $this->priority
     ]);
     //一覧ページにリダイレクト
     return redirect()->route('memos.index');
@@ -40,6 +41,12 @@ $store = function() {
             @enderror<br>
             <!-- wire:model="body"で入力値とコンポーネントの状態($this->body)を自動的に同期 -->
             <textarea wire:model="body" id="body"></textarea>
+            <select name="priority">
+                <option value="1">低</option>
+                <option value="2">中</option>
+                <option value="3">高</option>
+            </select>
+
         </p>
 
         <button type="submit">登録</button>

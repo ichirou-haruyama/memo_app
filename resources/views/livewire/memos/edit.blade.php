@@ -4,7 +4,7 @@ use function Livewire\Volt\{state, mount, rules};
 use App\Models\Memo;
 
 //フォームの状態を管理
-state(['memo', 'title', 'body']);
+state(['memo', 'title', 'body', 'priority']);
 
 rules([
     'title' => 'required|string|max:50',
@@ -16,6 +16,7 @@ mount(function (Memo $memo) {
     $this->memo = $memo;
     $this->title = $memo->title;
     $this->body = $memo->body;
+    $this->priority = $memo->priority;
 });
 
 $update = function () {
@@ -46,6 +47,12 @@ $update = function () {
             @enderror<br>
             <!-- wire:model="body"で入力値とコンポーネントの状態($this->body)を自動的に同期 -->
             <textarea wire:model="body" id="body"></textarea>
+            <select name="address">
+                <option value="1">低</option>
+                <option value="2">中</option>
+                <option value="3">高</option>
+            </select>
+
         </p>
 
         <button type="submit">更新</button>
